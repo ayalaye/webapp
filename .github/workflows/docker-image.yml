@@ -5,12 +5,13 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-    
-  # Allows you to run this workflow manually from the Actions tab
+
+ # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    
 
 jobs:
- 
+
   build:
 
     runs-on: ubuntu-latest
@@ -18,8 +19,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ayalaye/webapp-demo:${{ github.run_number }}-${{ github.sha }}
-    - name: docker login
-      run: docker login -u $ {{ secrets.DOCKER_HUB_USER }} -p {{ secrets.DOCKER_HUB_PASS }}
+      run: docker build . --file Dockerfile --tag sarahed/webapp-demo:${{github.run_number}}-${{github.sha}}
+    - name: Docker login
+      run: docker login -u ${{secrets.DOCKER_HUB_USER}} -p ${{secrets.DOCKER_HUB_PASS}}
     - name: Push the Docker image
-      run: docker push ayalaye/webapp-demo:${{ github.run_number }}-${{ github.sha }}
+      run: docker push sarahed/webapp-demo:${{github.run_number}}-${{github.sha}}
